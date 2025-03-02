@@ -6,7 +6,6 @@ from PIL import Image
 trained_model = None
 class_names = ['Front Breakage', 'Front Crushed', 'Front Normal', 'Rear Breakage', 'Rear Crushed', 'Rear Normal']
 
-
 # Load the pre-trained ResNet model
 class CarClassifierResNet(nn.Module):
     def __init__(self, num_classes=6):
@@ -44,7 +43,7 @@ def predict(image_path):
 
     if trained_model is None:
         trained_model = CarClassifierResNet()
-        trained_model.load_state_dict(torch.load("Car_Damage_Detector_Project\model\saved_model.pth"))
+        trained_model.load_state_dict(torch.load("artifacts\\saved_model.pth"))
         trained_model.eval()
 
     with torch.no_grad():
